@@ -24,15 +24,16 @@ public abstract class BattleLoc extends Location{
         if(selectCase.equals("S") && combat(obsNumber)){
                 System.out.println(this.getName() + " tüm düşmanları yendiniz.");
                 String loc = this.getName();
+                Prize[] prizeList = Prize.prizes();
                 switch(loc){
                     case "Mağara":
-                        this.getPlayer().getInventory().getPrize().add("");
+                        this.getPlayer().getInventory().addPrize(prizeList[0]);
                         break;
                     case "Orman":
-                        this.getPlayer().getInventory().getPrize().setName("Odun");
+                        this.getPlayer().getInventory().addPrize(prizeList[1]);
                         break;
                     case "Nehir":
-                        this.getPlayer().getInventory().getPrize().setName("Su");
+                        this.getPlayer().getInventory().addPrize(prizeList[2]);
                         break;
                 }
                 return true;
@@ -90,6 +91,9 @@ public abstract class BattleLoc extends Location{
     }
 
     public void afterHit(){
+        if(this.getObstacle().getHealth() == 0){
+
+        }
         System.out.println("Canınız: "+this.getPlayer().getHealth());
         System.out.println(this.getObstacle().getName() + " Canı :" + this.getObstacle().getHealth());
         System.out.println( );

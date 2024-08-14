@@ -15,6 +15,7 @@ public class Prize {
         return prizeList;
     }
 
+
     public String getName() {
         return name;
     }

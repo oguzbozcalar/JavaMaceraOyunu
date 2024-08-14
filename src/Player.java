@@ -75,8 +75,11 @@ public void printInfo(){
     System.out.println("Silahınız: "+ this.getInventory().getWeapon().getName()+
             ", Zırhınız: "+ this.getInventory().getArmor().getName()+
             ", Bloklama: "+ this.getInventory().getArmor().getBlock()+
-            ", Hasarınız:  " + this.getTotalDamage()+ ", Sağlık:" + this.getHealth() + ", Para:" + this.getMoney()+
-            "Ödül Envanteri: " + this.getInventory().getPrize().getLast());
+            ", Hasarınız:  " + this.getTotalDamage()+ ", Sağlık:" + this.getHealth() + ", Para:" + this.getMoney());
+    System.out.println("Ödül çantası: ");
+    for (Prize prize : this.inventory.getPrizes()) {
+        System.out.print(prize.getName()+" ");
+    }
 }
 
     public String getName() {
