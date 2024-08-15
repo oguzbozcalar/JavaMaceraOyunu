@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Game {
 
     private Scanner input = new Scanner(System.in);
+    public boolean yemekVar = false;
+    public boolean odunVar = false;
+    public boolean suVar = false;
 
     public void start(){
         System.out.println("Macera oyununa hoşgeldiniz.");
@@ -27,7 +30,19 @@ public class Game {
             System.out.println("0 - Çıkış Yap");
             System.out.println("Lütfen gitmek istediğiniz bölgeyi seçiniz:");
             int selectLoc = input.nextInt();
+
+            for (Prize prize : player.getInventory().getPrizes()) {
+                if (prize.getName().equals("Yemek") && selectLoc == 3) {
+                    yemekVar = true;
+                } else if (prize.getName().equals("Odun") && selectLoc == 4) {
+                    odunVar = true;
+                } else if (prize.getName().equals("Su") && selectLoc == 5) {
+                    suVar = true;
+                }
+            }
             switch(selectLoc){
+
+
                 case 0:
                     location = null;
                     break;
@@ -38,13 +53,25 @@ public class Game {
                     location = new ToolStore(player);
                     break;
                 case 3:
-                    location = new Cave(player);
+                    if(yemekVar){
+                        System.out.println("Zaten yemeğin var.Buraya tekrar giremezsin.");
+                        location = new SafeHouse(player);
+                    }else{
+                    location = new Cave(player);}
                     break;
                 case 4:
-                    location = new Forest(player);
+                    if(odunVar){
+                        System.out.println("Zaten odunun var.Buraya tekrar giremezsin.");
+                        location = new SafeHouse(player);
+                    }else{
+                        location = new Forest(player);}
                     break;
                 case 5:
-                    location = new River(player);
+                    if(suVar){
+                        System.out.println("Zaten suyun var.Buraya tekrar giremezsin.");
+                        location = new SafeHouse(player);
+                    }else{
+                        location = new River(player);}
                     break;
                 default:
                     System.out.println("Lütfen geçerli bir bölge giriniz ...");
