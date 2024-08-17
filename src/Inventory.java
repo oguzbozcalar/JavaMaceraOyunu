@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
-   private Weapon weapon;
-   private Armor armor;
+    private Weapon weapon;
+    private Armor armor;
     private List<Prize> prizes;
 
     public Weapon getWeapon() {
@@ -43,9 +43,9 @@ public class Inventory {
     }
 
     public Inventory() {
-       this.weapon = new Weapon("Yumruk",-1,0,0);
-       this.armor = new Armor(-1,"Paçavra",0,0);
-       this.prizes = new ArrayList<>();
-   }
+        this.weapon = new Weapon("Yumruk", -1, 0, 0);
+        this.armor = new Armor(-1, "Paçavra", 0, 0);
+        this.prizes = new ArrayList<>();
+    }
 
 }
